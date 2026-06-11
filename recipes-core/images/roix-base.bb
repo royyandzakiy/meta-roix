@@ -21,8 +21,6 @@ IMAGE_INSTALL:append = " \
 # Remove unused bloat
 IMAGE_INSTALL:remove = "hicolor-icon-theme"
 
-hostname:pn-base-files = "roixpi"
-
 ROOTFS_POSTPROCESS_COMMAND += "setup_eth0_dhcp;"
 
 setup_eth0_dhcp() {

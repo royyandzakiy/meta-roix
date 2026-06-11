@@ -16,21 +16,8 @@ IMAGE_INSTALL:append = " \
     iputils \
     openssh-sshd \
     openssh-sftp-server \
+    roix-netconf \
 "
 
 # Remove unused bloat
 IMAGE_INSTALL:remove = "hicolor-icon-theme"
-
-ROOTFS_POSTPROCESS_COMMAND += "setup_eth0_dhcp;"
-
-setup_eth0_dhcp() {
-    install -d ${IMAGE_ROOTFS}/etc/systemd/network
-    cat > ${IMAGE_ROOTFS}/etc/systemd/network/20-eth0.network << EOF
-[Match]
-Name=eth0
-
-[Network]
-DHCP=yes
-IPv6AcceptRA=yes
-EOF
-}
